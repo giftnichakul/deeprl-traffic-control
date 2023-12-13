@@ -12,13 +12,13 @@ df1 = pd.read_csv(f'data/30minutes/sim/{category}.csv')
 df2 = pd.read_csv(f'data/30minutes/pred/{category}.csv')
 
 # Plot the data
-plt.plot(df1['Vehicle Per Hour'], df1[f'{column} Time'], label=f'Simulation {category}')
-plt.plot(df2['Vehicle Per Hour'], df2[f'{column} Time'], label=f'Prediction {category}')
+plt.plot(df1['Vehicle Per Hour'], df1[f'{column} Time'], label=f'Simulation')
+plt.plot(df2['Vehicle Per Hour'], df2[f'{column} Time'], label=f'Prediction')
 
 # Add labels and title
-plt.xlabel('VPH')
-plt.ylabel(f'{column} Time')
-plt.title(f'{column} Time vs. VPH')
+plt.xlabel('Vehicles Per Hour')
+plt.ylabel(f'Total{column} Time')
+plt.title(f'Total {column} Time vs. Vehicles Per Hour')
 
 # Add legend
 plt.grid(True)

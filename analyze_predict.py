@@ -13,7 +13,7 @@ else:
 
 
 departIn = '30minutes'
-vph_simu = [3900, 4200]
+vph_simu = [3000,3300,3600,3900,4200]
 model_name = '3600-vph.zip'
 
 total_waiting_time = []
