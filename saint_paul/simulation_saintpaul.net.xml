@@ -114,14 +114,14 @@
     </edge>
 
     <tlLogic id="J0" type="static" programID="0" offset="0">
-        <phase duration="33" state="rrrrrrrrGGGGGrrr"/>
-        <phase duration="4"  state="rrrrrrrryyyyyrrr"/>
-        <phase duration="33" state="GGGGGrrrrrrrrrrr"/>
-        <phase duration="4"  state="yyyyyrrrrrrrrrrr"/>
-        <phase duration="33" state="rrrrrrrrrrrrrGGG"/>
-        <phase duration="4"  state="rrrrrrrrrrrrryyy"/>
-        <phase duration="33" state="rrrrrGGGrrrrrrrr"/>
-        <phase duration="4"  state="rrrrryyyrrrrrrrr"/>
+        <phase duration="66" state="rrrrrrrrGGGGGrrr"/>
+        <phase duration="5"  state="rrrrrrrryyyyyrrr"/>
+        <phase duration="71" state="GGGGGrrrrrrrrrrr"/>
+        <phase duration="5"  state="yyyyyrrrrrrrrrrr"/>
+        <phase duration="45" state="rrrrrrrrrrrrrGGG"/>
+        <phase duration="5"  state="rrrrrrrrrrrrryyy"/>
+        <phase duration="50" state="rrrrrGGGrrrrrrrr"/>
+        <phase duration="5"  state="rrrrryyyrrrrrrrr"/>
     </tlLogic>
 
     <junction id="J0" type="traffic_light" x="0.00" y="100.00" incLanes="-E0_0 -E0_1 -E0_2 -E0_3 -E3_0 -E3_1 -E2_0 -E2_1 -E2_2 -E1_0 -E1_1" intLanes=":J0_0_0 :J0_1_0 :J0_1_1 :J0_1_2 :J0_4_0 :J0_5_0 :J0_6_0 :J0_7_0 :J0_8_0 :J0_9_0 :J0_9_1 :J0_9_2 :J0_12_0 :J0_13_0 :J0_14_0 :J0_15_0" shape="-12.80,89.60 9.60,89.60 10.04,91.82 10.60,92.60 11.38,93.16 12.38,93.49 13.60,93.60 13.60,103.20 11.38,104.00 10.60,105.00 10.04,106.40 9.71,108.20 9.60,110.40 -9.60,110.40 -10.40,108.18 -11.40,107.40 -12.80,106.84 -14.60,106.51 -16.80,106.40 -16.80,96.80 -14.58,96.00 -13.80,95.00 -13.24,93.60 -12.91,91.80">

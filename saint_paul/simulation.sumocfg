@@ -1,7 +1,7 @@
 <configuration>
 
 <input>
-<net-file value="yay.net.xml" /> 
+<net-file value="simulation_saintpaul.net.xml" /> 
 <route-files value="veh.rou.xml" />
 </input>
 <time>
