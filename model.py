@@ -12,17 +12,23 @@ else:
 
 from sumo_rl import SumoEnvironment
 
+# parameter
+route_number = '5000'
+net_file="./saint_paul/simulation_saintpaul.net.xml"
+route_file = f"./saint_paul/trips/1hour/{route_number}.rou.xml"
+total_timesteps = 10000
+output_folder = "./saint_paul/model/1hour/"
+
 def my_reward_fn(traffic_signal):
     return traffic_signal.get_total_queued()
 
-route_file = '3600-vph'
 env = SumoEnvironment(
-    net_file="2-intersection.net.xml",
-    route_file=f"trips/30minutes/{route_file}.rou.xml",
+    net_file=net_file,
+    route_file=route_file,
     single_agent=True,
-    yellow_time=4,
-    num_seconds=3000,
-    delta_time=5,
+    yellow_time=5,
+    num_seconds=7000,
+    delta_time=6,
     #reward_fn=my_reward_fn
 )
 
@@ -36,8 +42,8 @@ model = DQN(
     verbose=1
 )
 
-total_timesteps = 6000
+total_timesteps = total_timesteps
 model.learn(total_timesteps=total_timesteps, reset_num_timesteps=False)
-model.save(f"model/30minute/{route_file}")
+model.save(f"{output_folder}/{route_number}")
 
 env.close()

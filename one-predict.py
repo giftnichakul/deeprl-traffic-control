@@ -1,10 +1,8 @@
 import os
 import sys
-
 import gymnasium as gym
 from stable_baselines3.dqn.dqn import DQN
 import traci
-import pandas as pd
 
 if "SUMO_HOME" in os.environ:
     tools = os.path.join(os.environ["SUMO_HOME"], "tools")
@@ -15,21 +13,23 @@ else:
 from sumo_rl import SumoEnvironment
 
 # parameter
-model_name = 'model/30minutes/3600-vph.zip'
-route_file = 'trips/30minutes/4200-vph.rou.xml'
+net_file = '2-intersection.net.xml'
+model_name = './model/30minutes/3600-vph.zip'
+route_file = './trips/30minutes/3900-vph.rou.xml'
 useGui = True
 
 env = SumoEnvironment(
-    net_file="2-intersection.net.xml",
+    net_file=net_file,
     route_file=route_file,
     single_agent=True,
     use_gui=useGui,
-    yellow_time=4,
+    yellow_time=5,
+    delta_time=6
 )
 
 model = DQN.load(model_name, env=env)
 
-obs, info = env.reset()
+obs, _ = env.reset()
 done = False
 waiting_time = {}
 
