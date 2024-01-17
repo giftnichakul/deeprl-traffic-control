@@ -1,8 +1,8 @@
 <configuration>
 
 <input>
-<net-file value="2-intersection.net.xml" /> 
-<route-files value="trips/30minutes/3600-vph.rou.xml" />
+<net-file value="junction.net.xml" /> 
+<route-files value="1hour/trips/3000.rou.xml" />
 </input>
 <time>
 <begin value="0" />
