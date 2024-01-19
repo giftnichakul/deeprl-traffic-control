@@ -3,6 +3,34 @@
 This is the project that try to improve the traffic by using deep reinforcement learning. We train the model in 2 intersection road.
 ![image](https://github.com/giftnichakul/depprl-traffic-control/assets/70993304/893ad3db-9948-440a-a11d-4d722d8d4f6b)
 
+## Sturcture folder
+```bash
+├───saint_paul
+│   ├───0.5hour
+│   │   ├─── ...
+│   ├───1.0hour
+│   │   ├───model
+│   │   │   ├───average-speed
+│   │   │   ├───diff-waiting-time
+│   │   │   ├───pressure
+│   │   │   └───queue
+│   │   └───trips
+│   │   │   ├───3000.rou.xml
+│   │   └───results.csv
+│   ├─── ...
+│   └───junction.net.xml
+```
+In each junction will have their own folder which includes 
+1. the range of time where vehecles will depart folder
+2. junction.net.xml - the graphic file of that junction
+
+  In each time folder will include
+1. model - result from training
+2. trips - route file which be name [number of cars].rou.xml
+3. results.csv - sum of waiting time and clear time from fixed phase and model prediction
+
+
+
 ## Explain trips
 - 30 minutes means all vehicles can depart since 0 to 30 minutes
 - 3000-vph means 3000 vehicles per hours
