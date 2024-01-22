@@ -1,8 +1,8 @@
 <configuration>
 
 <input>
-<net-file value="simulation_saintpaul.net.xml" /> 
-<route-files value="veh.rou.xml" />
+<net-file value="junction.net.xml" /> 
+<route-files value="1.0hour/trips/3000.rou.xml" />
 </input>
 <time>
 <begin value="0" />
