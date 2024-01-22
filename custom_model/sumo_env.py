@@ -28,15 +28,18 @@ class SumoCustom(Env):
     self.yellow_time = yellow_time
     self.num_seconds = num_seconds
     self.use_gui = use_gui
+    self.sumo = None
     self.label = str(SumoCustom.CONNECTION_LABEL)
     SumoCustom.CONNECTION_LABEL += 1
 
-    if LIBSUMO:
-      traci.start([checkBinary("sumo"), "-n", self.net])  # Start only to retrieve traffic light information
-      self.conn = traci
-    else:
-      traci.start([checkBinary("sumo"), "-n", self.net], label="init_connection" + self.label)
-      self.conn = traci.getConnection("init_connection" + self.label)
+    traci.start([checkBinary("sumo"), "-n", self.net])
+
+    # if LIBSUMO:
+    #   traci.start([checkBinary("sumo"), "-n", self.net])  # Start only to retrieve traffic light information
+    #   self.conn = traci
+    # else:
+    #   traci.start([checkBinary("sumo"), "-n", self.net], label="init_connection" + self.label)
+    #   self.conn = traci.getConnection("init_connection" + self.label)
 
     """ It will choose to open this phases for 10, 20, 30 seconds """
     self.time_until = 0
@@ -48,40 +51,49 @@ class SumoCustom(Env):
     else:
       self._sumo_binary = checkBinary("sumo")
 
-    self.ts_id = self.conn.trafficlight.getIDList()[0]
+    self.ts_id = traci.trafficlight.getIDList()[0]
 
     """ Set Green phase """
-    self.all_phases = self.conn.trafficlight.getAllProgramLogics(self.ts_id)[0].phases
+    self.all_phases = traci.trafficlight.getAllProgramLogics(self.ts_id)[0].phases
     self.num_all_phases = len(self.all_phases)
     self.current_phase = 0
 
     """ Set lanes to retrive the halting number of each lanes """
-    self.lanes = self.conn.trafficlight.getControlledLanes(self.ts_id)
+    self.lanes = traci.trafficlight.getControlledLanes(self.ts_id)
 
     """ Set Observation space """
     self.observation_space = self.observation()
-    self.conn.close()
+    traci.close()
 
   def step(self, action):
     """ If change to next phase, must change to yellow phase first and then switch to next phase """
+    traci.simulationStep()
     next_phase = self.all_phases[(self.current_phase + 2)% self.num_all_phases].state
     yellow_phase = self.all_phases[(self.current_phase + 1)% self.num_all_phases].state
 
-    if self.is_yellow_phase and self.conn.simulation.getTime() < self.time_until:
-      self.conn.trafficlight.setRedYellowGreenState(self.ts_id, next_phase)
+    # Set to green phase
+    if self.is_yellow_phase and traci.simulation.getTime() < self.time_until:
+      traci.trafficlight.setRedYellowGreenState(self.ts_id, next_phase)
       self.is_yellow_phase = False
       self.time_until += (action + 1) * 10
-      self.phase = (self.phase + 1) % self.num_all_phases
+      print((action + 1) * 10)
+      self.current_phase = (self.current_phase + 1) % self.num_all_phases
 
-    if (not self.is_yellow_phase) and self.conn.simulation.getTime() >= self.time_until:
-      self.conn.trafficlight.setRedYellowGreenState(self.ts_id, yellow_phase)
+    # Set to yellow phase
+    if (not self.is_yellow_phase) and traci.simulation.getTime() >= self.time_until:
+      traci.trafficlight.setRedYellowGreenState(self.ts_id, yellow_phase)
       self.is_yellow_phase = True
       self.time_until += self.yellow_time
 
     observation = self.observation()
     reward = self.get_total_queued()
     terminated = False
-    truncated = self.conn.simulation.getTime() > self.num_seconds
+    vehicles = traci.vehicle.getIDList()
+
+    # Fix time duay
+    if len(vehicles) == 0 and traci.simulation.getTime() > 4000: truncated = True
+    else: truncated = False
+
     info = {}
 
     return observation, reward, terminated, truncated, info
@@ -103,14 +115,17 @@ class SumoCustom(Env):
     observation = np.array(queue, dtype=np.float32)
     return observation
   
+  def _sumo_step(self):
+    traci.simulationStep()
+  
   def get_lanes_queue(self):
     """ Compute from number of halting vehicles (<0.1m/s) divided by the length of lanes"""
-    lanes_queue = [self.conn.lane.getLastStepHaltingNumber(lane)/self.conn.lane.getLength(lane) for lane in self.lanes]
+    lanes_queue = [traci.lane.getLastStepHaltingNumber(lane)/traci.lane.getLength(lane) for lane in self.lanes]
     return lanes_queue
   
   def get_total_queued(self) -> int:
     """ Returns the total number of vehicles halting in the intersection """
-    return sum(self.conn.lane.getLastStepHaltingNumber(lane) for lane in self.lanes)
+    return sum(traci.lane.getLastStepHaltingNumber(lane) for lane in self.lanes)
   
   def start_simulation(self):
     sumo_cmd = [
@@ -123,18 +138,17 @@ class SumoCustom(Env):
     
     if self.use_gui or self.render_mode is not None:
       sumo_cmd.extend(["--start", "--quit-on-end"])
-
-    self.conn.start(sumo_cmd)
+    
+    traci.start(sumo_cmd)
+    self.sumo = traci
 
   def close(self):
     if self.sumo is None: return
 
-    if not LIBSUMO:
-        traci.switch(self.label)
     traci.close()
 
     if self.disp is not None:
-        self.disp.stop()
-        self.disp = None
+      self.disp.stop()
+      self.disp = None
 
     self.sumo = None
