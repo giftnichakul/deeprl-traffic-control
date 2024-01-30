@@ -27,7 +27,8 @@ class SumoDeepRl:
       num_seconds=num_seconds,
       delta_time=yellow_time+1,
       yellow_time=yellow_time,
-      reward_fn=reward_fn
+      reward_fn=reward_fn,
+      waiting_time_memory=10000,
     )
   
   def create_routes(self, route_details, time, total_cars):
@@ -116,7 +117,7 @@ class SumoDeepRl:
 
     route_path = f'{self.junction_name}/{sim_time}/trips/{route_file}'
     
-    sumoCmd = [sumoBinary, "-n", self._net, "-r", route_path, "--no-warnings", "--quit-on-end"]
+    sumoCmd = [sumoBinary, "-n", self._net, "-r", route_path, "--quit-on-end", "--waiting-time-memory", "10000", "--time-to-teleport", "-1"]
     traci.start(sumoCmd)
 
     waiting_time = {}
