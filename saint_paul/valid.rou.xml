@@ -1,0 +1,27 @@
+<routes>
+  <route id="route_sw" edges="-E0 E1"/>
+  <route id="route_sn" edges="-E0 E2"/>
+  <route id="route_se" edges="-E0 E3"/>
+  <route id="route_ws" edges="-E1 E0"/>
+  <route id="route_wn" edges="-E1 E2"/>
+  <route id="route_we" edges="-E1 E3"/>
+  <route id="route_ns" edges="-E2 E0"/>
+  <route id="route_nw" edges="-E2 E1"/>
+  <route id="route_ne" edges="-E2 E3"/>
+  <route id="route_es" edges="-E3 E0"/>
+  <route id="route_ew" edges="-E3 E1"/>
+  <route id="route_en" edges="-E3 E2"/>
+
+  <vehicle id="0" depart="0" route="route_ns" />
+  <vehicle id="1" depart="0" route="route_ns" />
+  <vehicle id="2" depart="0" route="route_ns" />
+  <vehicle id="3" depart="0" route="route_ns" />
+  <vehicle id="4" depart="0" route="route_ns" />
+  <vehicle id="5" depart="0" route="route_ns" />
+
+
+  <vehicle id="6" depart="0" route="route_sw" />
+  <vehicle id="7" depart="1" route="route_sw" />
+  <vehicle id="8" depart="2" route="route_sw" />
+  <vehicle id="9" depart="2" route="route_sw" />
+</routes>

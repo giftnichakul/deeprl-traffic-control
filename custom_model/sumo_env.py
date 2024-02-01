@@ -29,6 +29,7 @@ class SumoCustom(Env):
     self.num_seconds = num_seconds
     self.use_gui = use_gui
     self.sumo = None
+    self.episode = 0
     self.label = str(SumoCustom.CONNECTION_LABEL)
     SumoCustom.CONNECTION_LABEL += 1
 
@@ -44,7 +45,8 @@ class SumoCustom(Env):
     """ It will choose to open this phases for 10, 20, 30 seconds """
     self.time_until = 0
     self.is_yellow_phase = False
-    self.action_space = spaces.Discrete(3)
+    # self.action_space = spaces.Discrete(3)
+    self.action_space = spaces.Box(low=10, high=75, shape=(1,), dtype=np.int32)
 
     if self.use_gui:
       self._sumo_binary = checkBinary("sumo-gui")
@@ -75,8 +77,8 @@ class SumoCustom(Env):
     if self.is_yellow_phase and traci.simulation.getTime() < self.time_until:
       traci.trafficlight.setRedYellowGreenState(self.ts_id, next_phase)
       self.is_yellow_phase = False
-      self.time_until += (action + 1) * 10
-      print((action + 1) * 10)
+      self.time_until += action
+      print(action)
       self.current_phase = (self.current_phase + 1) % self.num_all_phases
 
     # Set to yellow phase
@@ -105,6 +107,14 @@ class SumoCustom(Env):
       return np.array(img)
 
   def reset(self):
+    if self.episode != 0:
+      self.close()
+    self.episode += 1
+
+    self.time_until = 0
+    self.current_phase = 0
+    self.is_yellow_phase = False
+    
     self.start_simulation()
     return self.observation()
 
@@ -129,11 +139,8 @@ class SumoCustom(Env):
   
   def start_simulation(self):
     sumo_cmd = [
-      self._sumo_binary,
-      "-n",
-      self.net,
-      "-r",
-      self.route,
+      self._sumo_binary, "-n", self.net, "-r", self.route,
+      "--waiting-time-memory", "10000", "--time-to-teleport", "-1"
     ]
     
     if self.use_gui or self.render_mode is not None:
@@ -146,9 +153,5 @@ class SumoCustom(Env):
     if self.sumo is None: return
 
     traci.close()
-
-    if self.disp is not None:
-      self.disp.stop()
-      self.disp = None
 
     self.sumo = None
