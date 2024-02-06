@@ -20,7 +20,7 @@ def totalVehicle(lanes: list):
   numVehicleList = [traci.lane.getLastStepVehicleNumber(lane) for lane in lanes]
   return sum(numVehicleList)
 
-for i in [1000, 2000, 3000, 4000, 5000]:
+for i in [3000,]:
   net_file = './saint_paul/junction.net.xml'
   route_path = f'./saint_paul/1.0hour/trips/{i}.rou.xml'
 
@@ -40,6 +40,7 @@ for i in [1000, 2000, 3000, 4000, 5000]:
   switchTime = 15
   currentPhase = 0
   yellowPhase = True
+  total_num_cars = []
 
   north_lane = getAlllanes('E2')
   south_lane = getAlllanes('E0')
@@ -53,6 +54,8 @@ for i in [1000, 2000, 3000, 4000, 5000]:
   while traci.simulation.getMinExpectedNumber() > 0:
     traci.simulationStep()
     #find the next phases to open (yellow and green)
+    total_num_cars.append(traci.vehicle.getIDCount())
+
     if traci.simulation.getTime() == switchTime:
       # Swicth to green phase
       if yellowPhase:
