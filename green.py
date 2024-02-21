@@ -15,8 +15,12 @@ useGui = True
 def getAlllanes(edge):
   return [lane for lane in allLanes if edge in lane]
 
+def getEdgeWaitingTime(edge):
+  return traci.edge.getWaitingTime(edge)
+
 def totalVehicle(lanes: list):
-  numVehicleList = [traci.lane.getLastStepVehicleNumber(lane) for lane in lanes]
+  # traci.lane.getLastStepVehicleNumber -> total number of car in that lane
+  numVehicleList = [traci.lane.getLastStepHaltingNumber(lane) for lane in lanes]
   return sum(numVehicleList)
 
 net_file = './saint_paul/junction.net.xml'
@@ -53,25 +57,35 @@ dir_lane = {0: north_lane, 1: south_lane, 2: east_lane, 3: west_lane}
 
 waiting_time = {}
 
+green_range = 60
 
+print(traci.lane.getLength('-E2_0'), traci.lane.getLength('-E0_0'),traci.lane.getLength('-E1_0'), traci.lane.getLength('-E3_0'))
 
-while traci.simulation.getTime() < 240:
+while traci.simulation.getMinExpectedNumber() > 0:
+#while traci.simulation.getTime() < 600:
   traci.simulationStep()
   # find the next phases to open (yellow and green)
   c_time = traci.simulation.getTime()
 
-  if c_time < 200:
+  vehicles = traci.vehicle.getIDList()
+
+  if '0' in vehicles:
+    print(traci.vehicle.getSpeed('0'), c_time) # 1-388, 
+  #print(c_time, traci.edge.getWaitingTime('-E0'), traci.edge.getLastStepHaltingNumber('-E0'))
+
+  if c_time < 350:
     traci.trafficlight.setRedYellowGreenState(trafficLightId, allPhases[0].state)
-  elif c_time <= 220:
+  elif c_time <= 350 + green_range:
     print(c_time, totalVehicle(south_lane))
     traci.trafficlight.setRedYellowGreenState(trafficLightId, allPhases[2].state)
-  elif c_time <= 225:
+  elif c_time <= 350 + green_range + 5:
     print(c_time, totalVehicle(south_lane))
     traci.trafficlight.setRedYellowGreenState(trafficLightId, allPhases[3].state)
   else:
     traci.trafficlight.setRedYellowGreenState(trafficLightId, allPhases[0].state)
   
   vehicles = traci.vehicle.getIDList()
+
   for vehicle in vehicles:
     vehicle_waiting_time = traci.vehicle.getAccumulatedWaitingTime(vehicle)
     if(vehicle not in waiting_time):
@@ -86,8 +100,9 @@ traci.close()
 
 """
 south lane 4:
-เปิด 50s ไฟเหลือง 5s: รถจาก 168 เหลือ 79, 76 ปล่อยรถ 92 ไฟเขียว 1s ปล่อยรถ 1.84
-เปิด 60s ไฟเหลือง 5s: รถจาก 168 เหลือ 61, 60 ปล่อยรถ 108, ไฟเขียว 1s ปล่อยรถ 1.8
+เปิด 20s ไฟเหลือง 5s: รถจาก 168 เหลือ 130 ปล่อยรถ 38 ไฟเขียว 1s ปล่อยรถ 1.9
+เปิด 50s ไฟเหลือง 5s: รถจาก 168 เหลือ 69 ปล่อยรถ 99 ไฟเขียว 1s ปล่อยรถ 1.98
+เปิด 60s ไฟเหลือง 5s: รถจาก 168 เหลือ 60 ปล่อยรถ 108, ไฟเขียว 1s ปล่อยรถ 1.8 5
 
 north lane 3:
 เปิด 50s ไฟเหลือง 5s: รถจาก 168 เหลือ 99, 97 ปล่อยรถ 71 คัน, ไฟเขียว 1s ปล่อยรถ 1.42
