@@ -1,0 +1,18 @@
+{
+    "w": {
+        "direction": "-E0",
+        "junction": ["J0", "J1"]
+    },
+    "n": {
+        "direction": "-E1",
+        "junction": ["J0", "J2"]
+    },
+    "e": {
+        "direction": "-E2",
+        "junction": ["J0", "J3"]
+    },
+    "s": {
+        "direction": "-E3",
+        "junction": ["J0", "J4"]
+    }
+}
