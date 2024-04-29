@@ -10,7 +10,7 @@ else:
   sys.exit("please declare environment variable 'SUMO_HOME'")
 
 # variable
-useGui = True
+useGui = False
 
 def getAlllanes(edge):
   return [lane for lane in allLanes if edge in lane]
@@ -68,6 +68,9 @@ while traci.simulation.getMinExpectedNumber() > 0:
   c_time = traci.simulation.getTime()
 
   vehicles = traci.vehicle.getIDList()
+
+  print('N', traci.edge.getLastStepVehicleIDs('-E2'))
+
 
   if '0' in vehicles:
     print(traci.vehicle.getSpeed('0'), c_time) # 1-388, 

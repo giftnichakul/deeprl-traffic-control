@@ -1,18 +1,22 @@
 {
     "w": {
         "direction": "-E0",
-        "junction": ["J0", "J1"]
+        "junction": ["J0", "J1"],
+        "lane": 3
     },
     "n": {
         "direction": "-E1",
-        "junction": ["J0", "J2"]
+        "junction": ["J0", "J2"],
+        "lane": 3
     },
     "e": {
         "direction": "-E2",
-        "junction": ["J0", "J3"]
+        "junction": ["J0", "J3"],
+        "lane": 3
     },
     "s": {
         "direction": "-E3",
-        "junction": ["J0", "J4"]
+        "junction": ["J0", "J4"],
+        "lane": 3
     }
 }

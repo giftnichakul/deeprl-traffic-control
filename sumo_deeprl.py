@@ -5,8 +5,8 @@ from sumolib import checkBinary
 import pandas as pd
 from sumo_rl import SumoEnvironment
 import xml.etree.ElementTree as ET
+
 class SumoDeepRl:
-  
   def __init__(self, junction_name):
     self.junction_name = junction_name
     self._net = f'{junction_name}/junction.net.xml'
@@ -37,10 +37,18 @@ class SumoDeepRl:
     Results save in: [junction_name]/[time]/trips/...
     """
     root = ET.Element("routes")
+    output_name = 'switch' + str(total_cars) + '.rou.xml'
     output_name = str(total_cars) + '.rou.xml'
 
     direction = ['n', 's', 'e', 'w']
     total_weight = sum(weight[1] for weight in route_details.values())
+
+    color = {
+      'n': {'s': '#FEC7B4', 'e': '#FC819E', 'w': '#F7418F'},
+      's': {'n': '#41C9E2', 'e': '#008DDA', 'w': '#ACE2E1'},
+      'e': {'n': '#FFEC9E', 's': '#FFBB70', 'w': '#ED9455'},
+      'w': {'n': '#C5EBAA', 's': '#7F9F80', 'e': '#3BFEA7'}
+    }
 
     for dir1 in direction:
       total_dir1 = round(route_details[dir1][1]/total_weight*total_cars)
@@ -53,7 +61,7 @@ class SumoDeepRl:
           else:
             edges = route_details[dir1][0] + ' ' + '-' + route_details[dir2][0]
 
-          ET.SubElement(root, "route", id=f"route_{dir1}{dir2}", edges=edges)
+          ET.SubElement(root, "route", id=f"route_{dir1}{dir2}", edges=edges, color=color[dir1][dir2])
           ET.SubElement(root, "flow", id=f"flow_{dir1}{dir2}", route=f"route_{dir1}{dir2}",
                           begin="0",end=str(time),
                           vehsPerHour=str(total_dir2),
@@ -194,4 +202,3 @@ class SumoDeepRl:
                       trained_number_veh=trained_number_veh, 
                       reward=reward,
                       trained_route_time=sim_time)
- 
