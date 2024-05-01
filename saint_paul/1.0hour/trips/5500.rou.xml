@@ -1,26 +1,26 @@
 <routes>
-  <route id="route_ns" edges="-E2 E0" />
-  <flow id="flow_ns" route="route_ns" begin="0" end="3600" vehsPerHour="659" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_ne" edges="-E2 E3" />
-  <flow id="flow_ne" route="route_ne" begin="0" end="3600" vehsPerHour="471" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_nw" edges="-E2 E1" />
-  <flow id="flow_nw" route="route_nw" begin="0" end="3600" vehsPerHour="424" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_sn" edges="-E0 E2" />
-  <flow id="flow_sn" route="route_sn" begin="0" end="3600" vehsPerHour="680" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_se" edges="-E0 E3" />
-  <flow id="flow_se" route="route_se" begin="0" end="3600" vehsPerHour="523" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_sw" edges="-E0 E1" />
-  <flow id="flow_sw" route="route_sw" begin="0" end="3600" vehsPerHour="471" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_en" edges="-E3 E2" />
-  <flow id="flow_en" route="route_en" begin="0" end="3600" vehsPerHour="432" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_es" edges="-E3 E0" />
-  <flow id="flow_es" route="route_es" begin="0" end="3600" vehsPerHour="465" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_ew" edges="-E3 E1" />
-  <flow id="flow_ew" route="route_ew" begin="0" end="3600" vehsPerHour="299" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_wn" edges="-E1 E2" />
-  <flow id="flow_wn" route="route_wn" begin="0" end="3600" vehsPerHour="378" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_ws" edges="-E1 E0" />
-  <flow id="flow_ws" route="route_ws" begin="0" end="3600" vehsPerHour="407" departSpeed="max" departPos="base" departLane="best" />
-  <route id="route_we" edges="-E1 E3" />
-  <flow id="flow_we" route="route_we" begin="0" end="3600" vehsPerHour="291" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ns" edges="-E2 E0" color="#FEC7B4" />
+  <flow id="flow_ns" route="route_ns" begin="0" end="3600" vehsPerHour="666" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ne" edges="-E2 E3" color="#FC819E" />
+  <flow id="flow_ne" route="route_ne" begin="0" end="3600" vehsPerHour="476" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_nw" edges="-E2 E1" color="#F7418F" />
+  <flow id="flow_nw" route="route_nw" begin="0" end="3600" vehsPerHour="428" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_sn" edges="-E0 E2" color="#41C9E2" />
+  <flow id="flow_sn" route="route_sn" begin="0" end="3600" vehsPerHour="683" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_se" edges="-E0 E3" color="#008DDA" />
+  <flow id="flow_se" route="route_se" begin="0" end="3600" vehsPerHour="518" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_sw" edges="-E0 E1" color="#ACE2E1" />
+  <flow id="flow_sw" route="route_sw" begin="0" end="3600" vehsPerHour="466" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_en" edges="-E3 E2" color="#FFEC9E" />
+  <flow id="flow_en" route="route_en" begin="0" end="3600" vehsPerHour="434" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_es" edges="-E3 E0" color="#FFBB70" />
+  <flow id="flow_es" route="route_es" begin="0" end="3600" vehsPerHour="460" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ew" edges="-E3 E1" color="#ED9455" />
+  <flow id="flow_ew" route="route_ew" begin="0" end="3600" vehsPerHour="296" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_wn" edges="-E1 E2" color="#C5EBAA" />
+  <flow id="flow_wn" route="route_wn" begin="0" end="3600" vehsPerHour="380" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ws" edges="-E1 E0" color="#7F9F80" />
+  <flow id="flow_ws" route="route_ws" begin="0" end="3600" vehsPerHour="403" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_we" edges="-E1 E3" color="#3BFEA7" />
+  <flow id="flow_we" route="route_we" begin="0" end="3600" vehsPerHour="288" departSpeed="max" departPos="base" departLane="best" />
 </routes>

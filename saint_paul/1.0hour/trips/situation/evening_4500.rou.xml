@@ -1,0 +1,26 @@
+<routes>
+  <route id="route_ns" edges="-E2 E0" />
+  <flow id="flow_ns" route="route_ns" begin="0" end="3600" vehsPerHour="240" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ne" edges="-E2 E3" />
+  <flow id="flow_ne" route="route_ne" begin="0" end="3600" vehsPerHour="200" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_nw" edges="-E2 E1" />
+  <flow id="flow_nw" route="route_nw" begin="0" end="3600" vehsPerHour="160" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_sn" edges="-E0 E2" />
+  <flow id="flow_sn" route="route_sn" begin="0" end="3600" vehsPerHour="350" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_se" edges="-E0 E3" />
+  <flow id="flow_se" route="route_se" begin="0" end="3600" vehsPerHour="200" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_sw" edges="-E0 E1" />
+  <flow id="flow_sw" route="route_sw" begin="0" end="3600" vehsPerHour="300" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_en" edges="-E3 E2" />
+  <flow id="flow_en" route="route_en" begin="0" end="3600" vehsPerHour="200" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_es" edges="-E3 E0" />
+  <flow id="flow_es" route="route_es" begin="0" end="3600" vehsPerHour="300" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ew" edges="-E3 E1" />
+  <flow id="flow_ew" route="route_ew" begin="0" end="3600" vehsPerHour="1000" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_wn" edges="-E1 E2" />
+  <flow id="flow_wn" route="route_wn" begin="0" end="3600" vehsPerHour="350" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_ws" edges="-E1 E0" />
+  <flow id="flow_ws" route="route_ws" begin="0" end="3600" vehsPerHour="250" departSpeed="max" departPos="base" departLane="best" />
+  <route id="route_we" edges="-E1 E3" />
+  <flow id="flow_we" route="route_we" begin="0" end="3600" vehsPerHour="900" departSpeed="max" departPos="base" departLane="best" />
+</routes>

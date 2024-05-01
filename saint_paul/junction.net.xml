@@ -80,39 +80,39 @@
     </edge>
 
     <edge id="-E0" from="J1" to="J0" priority="-1">
-        <lane id="-E0_0" index="0" speed="13.89" length="1989.60" shape="-11.20,-1900.00 -11.20,89.60"/>
-        <lane id="-E0_1" index="1" speed="13.89" length="1989.60" shape="-8.00,-1900.00 -8.00,89.60"/>
-        <lane id="-E0_2" index="2" speed="13.89" length="1989.60" shape="-4.80,-1900.00 -4.80,89.60"/>
-        <lane id="-E0_3" index="3" speed="13.89" length="1989.60" shape="-1.60,-1900.00 -1.60,89.60"/>
+        <lane id="-E0_0" index="0" speed="33.33" length="1989.60" shape="-11.20,-1900.00 -11.20,89.60"/>
+        <lane id="-E0_1" index="1" speed="33.33" length="1989.60" shape="-8.00,-1900.00 -8.00,89.60"/>
+        <lane id="-E0_2" index="2" speed="33.33" length="1989.60" shape="-4.80,-1900.00 -4.80,89.60"/>
+        <lane id="-E0_3" index="3" speed="33.33" length="1989.60" shape="-1.60,-1900.00 -1.60,89.60"/>
     </edge>
     <edge id="-E1" from="J2" to="J0" priority="-1">
-        <lane id="-E1_0" index="0" speed="13.89" length="1983.20" shape="-2000.00,104.80 -16.80,104.80"/>
-        <lane id="-E1_1" index="1" speed="13.89" length="1983.20" shape="-2000.00,101.60 -16.80,101.60"/>
+        <lane id="-E1_0" index="0" speed="33.33" length="1983.20" shape="-2000.00,104.80 -16.80,104.80"/>
+        <lane id="-E1_1" index="1" speed="33.33" length="1983.20" shape="-2000.00,101.60 -16.80,101.60"/>
     </edge>
     <edge id="-E2" from="J3" to="J0" priority="-1">
-        <lane id="-E2_0" index="0" speed="13.89" length="1989.60" shape="8.00,2100.00 8.00,110.40"/>
-        <lane id="-E2_1" index="1" speed="13.89" length="1989.60" shape="4.80,2100.00 4.80,110.40"/>
-        <lane id="-E2_2" index="2" speed="13.89" length="1989.60" shape="1.60,2100.00 1.60,110.40"/>
+        <lane id="-E2_0" index="0" speed="33.33" length="1989.60" shape="8.00,2100.00 8.00,110.40"/>
+        <lane id="-E2_1" index="1" speed="33.33" length="1989.60" shape="4.80,2100.00 4.80,110.40"/>
+        <lane id="-E2_2" index="2" speed="33.33" length="1989.60" shape="1.60,2100.00 1.60,110.40"/>
     </edge>
     <edge id="-E3" from="J4" to="J0" priority="-1">
-        <lane id="-E3_0" index="0" speed="13.89" length="1986.40" shape="2000.00,95.20 13.60,95.20"/>
-        <lane id="-E3_1" index="1" speed="13.89" length="1986.40" shape="2000.00,98.40 13.60,98.40"/>
+        <lane id="-E3_0" index="0" speed="33.33" length="1986.40" shape="2000.00,95.20 13.60,95.20"/>
+        <lane id="-E3_1" index="1" speed="33.33" length="1986.40" shape="2000.00,98.40 13.60,98.40"/>
     </edge>
     <edge id="E0" from="J0" to="J1" priority="-1">
-        <lane id="E0_0" index="0" speed="13.89" length="1989.60" shape="8.00,89.60 8.00,-1900.00"/>
-        <lane id="E0_1" index="1" speed="13.89" length="1989.60" shape="4.80,89.60 4.80,-1900.00"/>
-        <lane id="E0_2" index="2" speed="13.89" length="1989.60" shape="1.60,89.60 1.60,-1900.00"/>
+        <lane id="E0_0" index="0" speed="33.33" length="1989.60" shape="8.00,89.60 8.00,-1900.00"/>
+        <lane id="E0_1" index="1" speed="33.33" length="1989.60" shape="4.80,89.60 4.80,-1900.00"/>
+        <lane id="E0_2" index="2" speed="33.33" length="1989.60" shape="1.60,89.60 1.60,-1900.00"/>
     </edge>
     <edge id="E1" from="J0" to="J2" priority="-1">
-        <lane id="E1_0" index="0" speed="13.89" length="1983.20" shape="-16.80,98.40 -2000.00,98.40"/>
+        <lane id="E1_0" index="0" speed="33.33" length="1983.20" shape="-16.80,98.40 -2000.00,98.40"/>
     </edge>
     <edge id="E2" from="J0" to="J3" priority="-1">
-        <lane id="E2_0" index="0" speed="13.89" length="1989.60" shape="-8.00,110.40 -8.00,2100.00"/>
-        <lane id="E2_1" index="1" speed="13.89" length="1989.60" shape="-4.80,110.40 -4.80,2100.00"/>
-        <lane id="E2_2" index="2" speed="13.89" length="1989.60" shape="-1.60,110.40 -1.60,2100.00"/>
+        <lane id="E2_0" index="0" speed="33.33" length="1989.60" shape="-8.00,110.40 -8.00,2100.00"/>
+        <lane id="E2_1" index="1" speed="33.33" length="1989.60" shape="-4.80,110.40 -4.80,2100.00"/>
+        <lane id="E2_2" index="2" speed="33.33" length="1989.60" shape="-1.60,110.40 -1.60,2100.00"/>
     </edge>
     <edge id="E3" from="J0" to="J4" priority="-1">
-        <lane id="E3_0" index="0" speed="13.89" length="1986.40" shape="13.60,101.60 2000.00,101.60"/>
+        <lane id="E3_0" index="0" speed="33.33" length="1986.40" shape="13.60,101.60 2000.00,101.60"/>
     </edge>
 
     <tlLogic id="J0" type="static" programID="0" offset="0">

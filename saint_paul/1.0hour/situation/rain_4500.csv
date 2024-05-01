@@ -1,0 +1,7 @@
+Types,North Waiting Time,South Waiting Time,East Waiting Time,West Waiting Time,Total North Car,Total South Car,Total East Car,Total West Car,Total Waiting Time,Clear Time
+Fixed Time,126404.0,172551.0,196975.0,133982.0,1336,1889,675,603,629912.0,4081.0
+Halting Number with max 60,130008.0,317138.0,68800.0,58034.0,1336,1889,675,603,573980.0,3931.0
+Halting Number with max 120,138328.0,205931.0,86980.0,77660.0,1336,1889,675,603,508899.0,3853.0
+"Proportion with 0.5, 5 vehicles/lane",295589.0,658998.0,53977.0,49005.0,1336,1889,675,603,1057569.0,4166.0
+"Proportion with 0.5, 10 vehicles/lane",247686.0,452091.0,62135.0,65381.0,1336,1889,675,603,827293.0,4056.0
+"Proportion with 0.2, 5 vehicles/lane",208723.0,569519.0,52926.0,56215.0,1336,1889,675,603,887383.0,4146.0
